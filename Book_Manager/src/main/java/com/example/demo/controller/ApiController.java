@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.entity.BookEntity;
+import com.example.demo.domain.BookEntity;
 import com.example.demo.service.BookService;
 
 @RestController
