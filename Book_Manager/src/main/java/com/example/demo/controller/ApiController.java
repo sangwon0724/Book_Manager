@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.domain.BookEntity;
+import com.example.demo.domain.Book;
 import com.example.demo.service.BookService;
 
 @RestController
@@ -18,12 +18,12 @@ public class ApiController {
 	private BookService bookService;
 	
 	@GetMapping("/add")
-	public BookEntity add(BookEntity book) {
+	public Book add(Book book) {
 		return bookService.add(book);
 	}
 
 	@GetMapping("/list")
-	public List<BookEntity> list(Model model) {
+	public List<Book> list(Model model) {
 
 		return bookService.list();
 	}
