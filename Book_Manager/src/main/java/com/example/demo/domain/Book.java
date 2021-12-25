@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -52,6 +53,16 @@ public class Book extends BaseEntity {
     @ManyToOne
     @ToString.Exclude
     private Publisher publisher;
+    
+    //@ManyToMany
+    @OneToMany
+    @JoinColumn(name = "book_id")
+    @ToString.Exclude
+    private List<BookAndAuthor> bookAndAuthors = new ArrayList<>();
+
+    public void addBookAndAuthors(BookAndAuthor... bookAndAuthors) {
+        Collections.addAll(this.bookAndAuthors, bookAndAuthors);
+    }
     
     //Auditable 인터페이스가 구현되있는데 @Overide가 없는 이유
     //1. Auditable 인터페이스에 구현되있는 것은 createdAt과 updatedAt에 대한 getter/setter다.
