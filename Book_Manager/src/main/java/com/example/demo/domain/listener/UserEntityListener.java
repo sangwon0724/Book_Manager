@@ -22,9 +22,9 @@ public class UserEntityListener {
 
         //UserHistory 객체에 데이터 설정
         UserHistory userHistory = new UserHistory();
-        userHistory.setUserId(user.getId());
         userHistory.setName(user.getName());
         userHistory.setEmail(user.getEmail());
+        userHistory.setUser(user);
 
         //데이터 저장
         userHistoryRepository.save(userHistory);

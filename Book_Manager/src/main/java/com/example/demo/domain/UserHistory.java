@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.example.demo.domain.listener.Auditable;
 
@@ -23,12 +24,12 @@ public class UserHistory extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
-
     private String name;
 
     private String email;
+
+    @ManyToOne
+    private User user;
     
     //Auditable 인터페이스가 구현되있는데 @Overide가 없는 이유
     //1. Auditable 인터페이스에 구현되있는 것은 createdAt과 updatedAt에 대한 getter/setter다.
