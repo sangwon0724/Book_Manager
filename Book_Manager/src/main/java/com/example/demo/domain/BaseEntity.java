@@ -1,6 +1,8 @@
 package com.example.demo.domain;
 
 import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import lombok.Data;
@@ -15,8 +17,10 @@ import com.example.demo.domain.listener.Auditable;
 @EntityListeners(value = AuditingEntityListener.class)
 public class BaseEntity implements Auditable {
     @CreatedDate
+    @Column(columnDefinition = "datetime(6) default now(6) comment '생성시간'", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
+    @Column(columnDefinition = "datetime(6) default now(6) comment '수정시간'", nullable = false)
     private LocalDateTime updatedAt;
 }
