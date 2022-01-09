@@ -79,4 +79,13 @@ public class BookService {
 	}
 	
 	/*public Page<BookEntity> list(Pageable pageable){ Page<BookEntity> bookList = bookRepository.findAll(pageable); return bookList; }*/
+	
+	@Transactional
+    public List<Book> getAll() {
+        List<Book> books = bookRepository.findAll();
+
+        books.forEach(System.out::println);
+
+        return books;
+    }
 }

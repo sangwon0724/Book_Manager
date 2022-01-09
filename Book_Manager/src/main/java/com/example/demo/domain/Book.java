@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Where;
 
+import com.example.demo.repository.dto.BookStatus;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -68,6 +70,11 @@ public class Book extends BaseEntity {
     public void addBookAndAuthors(BookAndAuthor... bookAndAuthors) {
         Collections.addAll(this.bookAndAuthors, bookAndAuthors);
     }
+    
+    private boolean deleted;
+
+    //@Convert(converter = BookStatusConverter.class)
+    private BookStatus status; // 판매상태
     
     //Auditable 인터페이스가 구현되있는데 @Overide가 없는 이유
     //1. Auditable 인터페이스에 구현되있는 것은 createdAt과 updatedAt에 대한 getter/setter다.
